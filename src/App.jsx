@@ -2479,11 +2479,13 @@ function App() {
         <div className="editor-modal-overlay">
           <div className="editor-modal-content">
             <button className="btn-close-editor" onClick={() => setEditorConfig(null)}>✖ Cancel</button>
-            <FilerobotImageEditor
-              source={editorConfig.src}
-              onSave={(editedImageObject) => handleSaveEditedImage(editedImageObject)}
-              annotationsCommon={{ fill: '#ff0000' }}
-            />
+            <EditorErrorBoundary onClose={() => setEditorConfig(null)}>
+              <FilerobotImageEditor
+                source={editorConfig.src}
+                onSave={(editedImageObject) => handleSaveEditedImage(editedImageObject)}
+                onClose={() => setEditorConfig(null)}
+              />
+            </EditorErrorBoundary>
           </div>
         </div>
       )}
