@@ -11,9 +11,11 @@ import imageCompression from 'browser-image-compression';
 import FilerobotImageEditor, { TABS, TOOLS } from 'react-filerobot-image-editor';
 
 function App() {
+  const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+
   // State to track which "page" the user is currently viewing
   const [currentPage, setCurrentPage] = useState(() => {
-    const path = window.location.pathname;
+    const path = window.location.pathname.replace(basePath, '') || '/';
     if (path === '/superaakash') return 'admin-dashboard';
     if (path === '/privacy-policy') return 'privacy-policy';
     if (path === '/terms-conditions') return 'terms-conditions';
