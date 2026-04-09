@@ -2483,12 +2483,6 @@ function App() {
               source={editorConfig.src}
               onSave={(editedImageObject) => handleSaveEditedImage(editedImageObject)}
               annotationsCommon={{ fill: '#ff0000' }}
-              Text={{ text: 'Redacted' }}
-              tabsIds={[TABS.ADJUST, TABS.ANNOTATE, TABS.FILTERS]}
-              defaultTabId={TABS.ANNOTATE}
-              defaultToolId={TOOLS.PEN}
-              savingPixelRatio={4}
-              previewPixelRatio={window.devicePixelRatio}
             />
           </div>
         </div>
