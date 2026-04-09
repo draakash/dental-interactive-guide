@@ -142,7 +142,9 @@ function App() {
 
     // Register the Service Worker
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js').catch(err => console.log('SW registration failed:', err));
+      navigator.serviceWorker.register('/sw.js').then(reg => {
+        reg.update(); // Forces browser to check for updates in the background
+      }).catch(err => console.log('SW registration failed:', err));
     }
 
     // Listen for the "Add to Home Screen" browser prompt
