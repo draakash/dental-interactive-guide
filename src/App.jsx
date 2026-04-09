@@ -200,15 +200,16 @@ function App() {
     else if (currentPage === 'activity') path = '/activity';
     else if (currentPage !== 'home') path = `/article/${currentPage}`;
     
-    if (window.location.pathname !== path) {
-      window.history.pushState({}, '', path);
+    const fullPath = basePath + path;
+    if (window.location.pathname !== fullPath) {
+      window.history.pushState({}, '', fullPath);
     }
-  }, [currentPage]);
+  }, [currentPage, basePath]);
 
   // Handle browser back/forward buttons natively
   useEffect(() => {
     const handlePopState = () => {
-      const path = window.location.pathname;
+      const path = window.location.pathname.replace(basePath, '') || '/';
       if (path === '/superaakash') setCurrentPage('admin-dashboard');
       else if (path === '/privacy-policy') setCurrentPage('privacy-policy');
       else if (path === '/terms-conditions') setCurrentPage('terms-conditions');
